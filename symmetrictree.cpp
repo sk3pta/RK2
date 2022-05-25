@@ -1,6 +1,6 @@
 #include <iostream>
 #include <random>
-#include <ctime>
+
 
 struct Tree {
     int value = 0;
@@ -23,13 +23,45 @@ void pushRight(int value, Tree *pTree) {
 }
 
 
-void symmetric(Tree *tree) {
+void symmetric(Tree *tree, std::vector<int> &out) {
+
     if (tree == nullptr) return;
-    symmetric(tree->left);
-    std::cout << tree->value << " ";
-    symmetric(tree->right);
+    symmetric(tree->left, out);
+    //std::cout << tree->value << " ";
+    out.push_back(tree->value);
+    symmetric(tree->right, out);
 
 }
+
+/*
+
+int main() {
+
+    std::vector<int> out;
+
+
+    Tree *tree = new Tree {56, nullptr, nullptr};
+    pushLeft(35, tree);
+    pushRight(48  , tree);
+    pushLeft(-35, tree->right);
+    pushRight(69, tree->right);
+
+
+    pushLeft(42, tree->left);
+    pushRight(18, tree->left);
+
+    pushLeft(-87, tree->left->right);
+    pushRight(171, tree->left->right);
+
+
+    pushLeft(250, tree->left->left);
+    pushRight(1337, tree->left->left);
+
+
+    symmetric(tree,out);
+std::cout << "AA";
+}
+
 
 
 int main() {
@@ -56,3 +88,4 @@ int main() {
 
 
 }
+ */

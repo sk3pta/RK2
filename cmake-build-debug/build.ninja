@@ -41,35 +41,68 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/augustus/TIMP/RK2/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target RK2
+# Object build statements for STATIC_LIBRARY target tree
 
 
 #############################################
-# Order-only phony target for RK2
+# Order-only phony target for tree
 
-build cmake_object_order_depends_target_RK2: phony || CMakeFiles/RK2.dir
+build cmake_object_order_depends_target_tree: phony || CMakeFiles/tree.dir
 
-build CMakeFiles/RK2.dir/main.cpp.o: CXX_COMPILER__RK2_Debug /home/augustus/TIMP/RK2/main.cpp || cmake_object_order_depends_target_RK2
-  DEP_FILE = CMakeFiles/RK2.dir/main.cpp.o.d
+build CMakeFiles/tree.dir/symmetrictree.cpp.o: CXX_COMPILER__tree_Debug /home/augustus/TIMP/RK2/symmetrictree.cpp || cmake_object_order_depends_target_tree
+  DEP_FILE = CMakeFiles/tree.dir/symmetrictree.cpp.o.d
   FLAGS = -g -std=gnu++14
-  OBJECT_DIR = CMakeFiles/RK2.dir
-  OBJECT_FILE_DIR = CMakeFiles/RK2.dir
+  OBJECT_DIR = CMakeFiles/tree.dir
+  OBJECT_FILE_DIR = CMakeFiles/tree.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target RK2
+# Link build statements for STATIC_LIBRARY target tree
 
 
 #############################################
-# Link the executable RK2
+# Link the static library libtree.a
 
-build RK2: CXX_EXECUTABLE_LINKER__RK2_Debug CMakeFiles/RK2.dir/main.cpp.o
-  FLAGS = -g
-  OBJECT_DIR = CMakeFiles/RK2.dir
+build libtree.a: CXX_STATIC_LIBRARY_LINKER__tree_Debug CMakeFiles/tree.dir/symmetrictree.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/tree.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = RK2
-  TARGET_PDB = RK2.dbg
+  TARGET_FILE = libtree.a
+  TARGET_PDB = tree.a.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target test
+
+
+#############################################
+# Order-only phony target for test
+
+build cmake_object_order_depends_target_test: phony || cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main cmake_object_order_depends_target_tree
+
+build CMakeFiles/test.dir/tests/MainTest.cpp.o: CXX_COMPILER__test_Debug /home/augustus/TIMP/RK2/tests/MainTest.cpp || cmake_object_order_depends_target_test
+  DEP_FILE = CMakeFiles/test.dir/tests/MainTest.cpp.o.d
+  FLAGS = -g -std=gnu++14
+  INCLUDES = -isystem /home/augustus/TIMP/RK2/third-party/gtest/googletest/include -isystem /home/augustus/TIMP/RK2/third-party/gtest/googletest
+  OBJECT_DIR = CMakeFiles/test.dir
+  OBJECT_FILE_DIR = CMakeFiles/test.dir/tests
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target test
+
+
+#############################################
+# Link the executable test
+
+build test: CXX_EXECUTABLE_LINKER__test_Debug CMakeFiles/test.dir/tests/MainTest.cpp.o | lib/libgtest.a lib/libgtest_main.a libtree.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a libtree.a
+  FLAGS = -g
+  LINK_LIBRARIES = lib/libgtest.a  lib/libgtest_main.a  libtree.a  lib/libgtest.a
+  OBJECT_DIR = CMakeFiles/test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = test
+  TARGET_PDB = test.dbg
 
 
 #############################################
@@ -95,8 +128,409 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/augustus/TIMP/RK2/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build gtest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/ccmake -S/home/augustus/TIMP/RK2 -B/home/augustus/TIMP/RK2/cmake-build-debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build gtest/edit_cache: phony gtest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build gtest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/augustus/TIMP/RK2 -B/home/augustus/TIMP/RK2/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build gtest/rebuild_cache: phony gtest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build gtest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build gtest/CMakeFiles/install.util: CUSTOM_COMMAND gtest/all
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build gtest/install: phony gtest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build gtest/CMakeFiles/install/local.util: CUSTOM_COMMAND gtest/all
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build gtest/install/local: phony gtest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build gtest/CMakeFiles/install/strip.util: CUSTOM_COMMAND gtest/all
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build gtest/install/strip: phony gtest/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/augustus/TIMP/RK2/third-party/gtest/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gmock
+
+
+#############################################
+# Order-only phony target for gmock
+
+build cmake_object_order_depends_target_gmock: phony || cmake_object_order_depends_target_gtest
+
+build gtest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o: CXX_COMPILER__gmock_Debug /home/augustus/TIMP/RK2/third-party/gtest/googlemock/src/gmock-all.cc || cmake_object_order_depends_target_gmock
+  DEP_FILE = gtest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o.d
+  FLAGS = -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++14
+  INCLUDES = -I/home/augustus/TIMP/RK2/third-party/gtest/googlemock/include -I/home/augustus/TIMP/RK2/third-party/gtest/googlemock -isystem /home/augustus/TIMP/RK2/third-party/gtest/googletest/include -isystem /home/augustus/TIMP/RK2/third-party/gtest/googletest
+  OBJECT_DIR = gtest/googlemock/CMakeFiles/gmock.dir
+  OBJECT_FILE_DIR = gtest/googlemock/CMakeFiles/gmock.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gmock
+
+
+#############################################
+# Link the static library lib/libgmock.a
+
+build lib/libgmock.a: CXX_STATIC_LIBRARY_LINKER__gmock_Debug gtest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o || lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = gtest/googlemock/CMakeFiles/gmock.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgmock.a
+  TARGET_PDB = gmock.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gmock_main
+
+
+#############################################
+# Order-only phony target for gmock_main
+
+build cmake_object_order_depends_target_gmock_main: phony || cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gtest
+
+build gtest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: CXX_COMPILER__gmock_main_Debug /home/augustus/TIMP/RK2/third-party/gtest/googlemock/src/gmock_main.cc || cmake_object_order_depends_target_gmock_main
+  DEP_FILE = gtest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o.d
+  FLAGS = -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++14
+  INCLUDES = -isystem /home/augustus/TIMP/RK2/third-party/gtest/googlemock/include -isystem /home/augustus/TIMP/RK2/third-party/gtest/googlemock -isystem /home/augustus/TIMP/RK2/third-party/gtest/googletest/include -isystem /home/augustus/TIMP/RK2/third-party/gtest/googletest
+  OBJECT_DIR = gtest/googlemock/CMakeFiles/gmock_main.dir
+  OBJECT_FILE_DIR = gtest/googlemock/CMakeFiles/gmock_main.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gmock_main
+
+
+#############################################
+# Link the static library lib/libgmock_main.a
+
+build lib/libgmock_main.a: CXX_STATIC_LIBRARY_LINKER__gmock_main_Debug gtest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o || lib/libgmock.a lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = gtest/googlemock/CMakeFiles/gmock_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgmock_main.a
+  TARGET_PDB = gmock_main.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build gtest/googlemock/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest/googlemock && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/ccmake -S/home/augustus/TIMP/RK2 -B/home/augustus/TIMP/RK2/cmake-build-debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build gtest/googlemock/edit_cache: phony gtest/googlemock/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build gtest/googlemock/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest/googlemock && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/augustus/TIMP/RK2 -B/home/augustus/TIMP/RK2/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build gtest/googlemock/rebuild_cache: phony gtest/googlemock/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build gtest/googlemock/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build gtest/googlemock/CMakeFiles/install.util: CUSTOM_COMMAND gtest/googlemock/all
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest/googlemock && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build gtest/googlemock/install: phony gtest/googlemock/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build gtest/googlemock/CMakeFiles/install/local.util: CUSTOM_COMMAND gtest/googlemock/all
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest/googlemock && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build gtest/googlemock/install/local: phony gtest/googlemock/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build gtest/googlemock/CMakeFiles/install/strip.util: CUSTOM_COMMAND gtest/googlemock/all
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest/googlemock && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build gtest/googlemock/install/strip: phony gtest/googlemock/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/augustus/TIMP/RK2/third-party/gtest/googlemock/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Order-only phony target for gtest
+
+build cmake_object_order_depends_target_gtest: phony || gtest/googletest/CMakeFiles/gtest.dir
+
+build gtest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o: CXX_COMPILER__gtest_Debug /home/augustus/TIMP/RK2/third-party/gtest/googletest/src/gtest-all.cc || cmake_object_order_depends_target_gtest
+  DEP_FILE = gtest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o.d
+  FLAGS = -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++14
+  INCLUDES = -I/home/augustus/TIMP/RK2/third-party/gtest/googletest/include -I/home/augustus/TIMP/RK2/third-party/gtest/googletest
+  OBJECT_DIR = gtest/googletest/CMakeFiles/gtest.dir
+  OBJECT_FILE_DIR = gtest/googletest/CMakeFiles/gtest.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Link the static library lib/libgtest.a
+
+build lib/libgtest.a: CXX_STATIC_LIBRARY_LINKER__gtest_Debug gtest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = gtest/googletest/CMakeFiles/gtest.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgtest.a
+  TARGET_PDB = gtest.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Order-only phony target for gtest_main
+
+build cmake_object_order_depends_target_gtest_main: phony || cmake_object_order_depends_target_gtest
+
+build gtest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o: CXX_COMPILER__gtest_main_Debug /home/augustus/TIMP/RK2/third-party/gtest/googletest/src/gtest_main.cc || cmake_object_order_depends_target_gtest_main
+  DEP_FILE = gtest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o.d
+  FLAGS = -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++14
+  INCLUDES = -isystem /home/augustus/TIMP/RK2/third-party/gtest/googletest/include -isystem /home/augustus/TIMP/RK2/third-party/gtest/googletest
+  OBJECT_DIR = gtest/googletest/CMakeFiles/gtest_main.dir
+  OBJECT_FILE_DIR = gtest/googletest/CMakeFiles/gtest_main.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Link the static library lib/libgtest_main.a
+
+build lib/libgtest_main.a: CXX_STATIC_LIBRARY_LINKER__gtest_main_Debug gtest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o || lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = gtest/googletest/CMakeFiles/gtest_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgtest_main.a
+  TARGET_PDB = gtest_main.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build gtest/googletest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest/googletest && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/ccmake -S/home/augustus/TIMP/RK2 -B/home/augustus/TIMP/RK2/cmake-build-debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build gtest/googletest/edit_cache: phony gtest/googletest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build gtest/googletest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest/googletest && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/augustus/TIMP/RK2 -B/home/augustus/TIMP/RK2/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build gtest/googletest/rebuild_cache: phony gtest/googletest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build gtest/googletest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build gtest/googletest/CMakeFiles/install.util: CUSTOM_COMMAND gtest/googletest/all
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest/googletest && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build gtest/googletest/install: phony gtest/googletest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build gtest/googletest/CMakeFiles/install/local.util: CUSTOM_COMMAND gtest/googletest/all
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest/googletest && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build gtest/googletest/install/local: phony gtest/googletest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build gtest/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMAND gtest/googletest/all
+  COMMAND = cd /home/augustus/TIMP/RK2/cmake-build-debug/gtest/googletest && /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build gtest/googletest/install/strip: phony gtest/googletest/CMakeFiles/install/strip.util
+
 # =============================================================================
 # Target aliases.
+
+build gmock: phony lib/libgmock.a
+
+build gmock_main: phony lib/libgmock_main.a
+
+build gtest: phony lib/libgtest.a
+
+build gtest_main: phony lib/libgtest_main.a
+
+build libgmock.a: phony lib/libgmock.a
+
+build libgmock_main.a: phony lib/libgmock_main.a
+
+build libgtest.a: phony lib/libgtest.a
+
+build libgtest_main.a: phony lib/libgtest_main.a
+
+build tree: phony libtree.a
 
 # =============================================================================
 # Folder targets.
@@ -106,7 +540,28 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/augustus/TIMP/RK2/cmake-build-debug
 
-build all: phony RK2
+build all: phony libtree.a test gtest/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/augustus/TIMP/RK2/cmake-build-debug/gtest
+
+build gtest/all: phony gtest/googlemock/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/augustus/TIMP/RK2/cmake-build-debug/gtest/googlemock
+
+build gtest/googlemock/all: phony lib/libgmock.a lib/libgmock_main.a gtest/googletest/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/augustus/TIMP/RK2/cmake-build-debug/gtest/googletest
+
+build gtest/googletest/all: phony lib/libgtest.a lib/libgtest_main.a
 
 # =============================================================================
 # Built-in targets
@@ -115,14 +570,14 @@ build all: phony RK2
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.22.3/CMakeCCompiler.cmake CMakeFiles/3.22.3/CMakeCXXCompiler.cmake CMakeFiles/3.22.3/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../third-party/gtest/CMakeLists.txt ../third-party/gtest/googlemock/CMakeLists.txt ../third-party/gtest/googlemock/cmake/gmock.pc.in ../third-party/gtest/googlemock/cmake/gmock_main.pc.in ../third-party/gtest/googletest/CMakeLists.txt ../third-party/gtest/googletest/cmake/Config.cmake.in ../third-party/gtest/googletest/cmake/gtest.pc.in ../third-party/gtest/googletest/cmake/gtest_main.pc.in ../third-party/gtest/googletest/cmake/internal_utils.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDependentOption.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakePackageConfigHelpers.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CheckCSourceCompiles.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CheckIncludeFile.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CheckLibraryExists.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageMessage.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/FindPython.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/FindPython/Support.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/FindThreads.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/GNUInstallDirs.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Internal/CheckSourceCompiles.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/UnixPaths.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.22.3/CMakeCCompiler.cmake CMakeFiles/3.22.3/CMakeCXXCompiler.cmake CMakeFiles/3.22.3/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.22.3/CMakeCCompiler.cmake CMakeFiles/3.22.3/CMakeCXXCompiler.cmake CMakeFiles/3.22.3/CMakeSystem.cmake: phony
+build ../CMakeLists.txt ../third-party/gtest/CMakeLists.txt ../third-party/gtest/googlemock/CMakeLists.txt ../third-party/gtest/googlemock/cmake/gmock.pc.in ../third-party/gtest/googlemock/cmake/gmock_main.pc.in ../third-party/gtest/googletest/CMakeLists.txt ../third-party/gtest/googletest/cmake/Config.cmake.in ../third-party/gtest/googletest/cmake/gtest.pc.in ../third-party/gtest/googletest/cmake/gtest_main.pc.in ../third-party/gtest/googletest/cmake/internal_utils.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDependentOption.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakePackageConfigHelpers.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CheckCSourceCompiles.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CheckIncludeFile.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/CheckLibraryExists.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageMessage.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/FindPython.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/FindPython/Support.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/FindThreads.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/GNUInstallDirs.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Internal/CheckSourceCompiles.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/Platform/UnixPaths.cmake /home/augustus/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/bin/cmake/linux/share/cmake-3.22/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.22.3/CMakeCCompiler.cmake CMakeFiles/3.22.3/CMakeCXXCompiler.cmake CMakeFiles/3.22.3/CMakeSystem.cmake: phony
 
 
 #############################################
