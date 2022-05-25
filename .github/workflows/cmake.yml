@@ -20,7 +20,7 @@ jobs:
 
 
     - name: Build
-      run: cmake -H. -b _build && cmake --build _build
+      run: cmake -H. -B _build && cmake --build _build
 
     - name: Test
       working-directory: ${{github.workspace}}/_build
