@@ -14,4 +14,3 @@ target_link_libraries(test gtest gtest_main tree)
 
 cmake_minimum_required(VERSION 3.4)
 
-)
