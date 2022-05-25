@@ -18,13 +18,28 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-
+    - name: submodules
+      run : |
+        git submodule update --init --recursive
+        sudo apt install lcov
+        
     - name: Build
-      run: cmake -H. -B _build && cmake --build _build
+      run: cmake -H. -B _build -DCOVERAGE=1 && cmake --build _build
 
     - name: Test
       working-directory: ${{github.workspace}}/_build
       # Execute tests defined by the CMake configuration.  
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
-      run: ./test
-      
+      run: |
+        ./test
+        lcov -c -t "symmetrictree" -o lcov.info -d .
+        lcov --remove lcov.info '/home/runner/work/RK2/RK2/third-party/gtest/*' -o lcov.info
+        lcov --remove lcov.info '/usr/include/*' -o lcov.info
+        
+    - name: CovBeg
+      uses: coverallsapp/github-action@master
+      with:
+          github-token: ${{ secrets.github_token }}
+          parallel: true
+          path-to-lcov: ./_build/lcov.info
+          coveralls-endpoint: https://coveralls.io
