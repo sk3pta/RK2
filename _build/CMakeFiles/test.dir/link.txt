@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/test.dir/tests/MainTest.cpp.o -o test  --coverage lib/libgtest.a lib/libgtest_main.a libtree.a lib/libgtest.a 
