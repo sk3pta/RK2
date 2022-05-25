@@ -40,6 +40,5 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
           github-token: ${{ secrets.github_token }}
-          parallel: true
           path-to-lcov: ./_build/lcov.info
-          coveralls-endpoint: https://coveralls.io
+          coveralls-endpoint: https://coveralls.io/github/sk3pta/RK2
